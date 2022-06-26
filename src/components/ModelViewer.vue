@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, toRefs } from "vue";
+import { defineComponent, onMounted, onBeforeUnmount, ref, toRefs } from "vue";
 import { GridHelper, PerspectiveCamera, Scene, WebGLRenderer, AmbientLight, DirectionalLight, PCFSoftShadowMap } from "three";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -72,13 +72,16 @@ export default defineComponent({
       }
     };
     // 描画
+    let requestId = undefined;
     const animate = () => {
+      
       const frame = () => {
         // 描画
         renderer.render(scene, camera);
         renderer.setClearColor(0x888888);
         // 画面を更新
-        requestAnimationFrame(frame);
+        
+        requestId = window.requestAnimationFrame(frame);
 
         controls.update()
       };
@@ -107,6 +110,14 @@ export default defineComponent({
         loadModel(modelPath.value);
       }
     });
+
+    onBeforeUnmount(() => {
+      if (requestId) {
+        console.log("remoe id", requestId);
+        window.cancelAnimationFrame(requestId);
+        requestId = undefined;
+      }
+    })
 
     const onClose = () => {
       console.log("HOED++++",emit)
