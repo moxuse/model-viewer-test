@@ -6,14 +6,14 @@
     <h3>Collection</h3>
     <ul class="model-list-items">      
       <li class="model-list-item">
-        <div @click="showModel('/models/3Ddata.glb')">
-          <img src="/images/2022_06_26-11_00_11.jpg">
+        <div @click="showModel('models/3Ddata.glb')">
+          <img src="images/2022_06_26-11_00_11.jpg">
         </div>
-        <div @click="showModel('/models/3Ddata2.glb')">
-          <img src="/images/2022_06_26-12_40_24.jpg">
+        <div @click="showModel('models/3Ddata2.glb')">
+          <img src="images/2022_06_26-12_40_24.jpg">
         </div>
-        <div @click="showModel('/models/3Ddata3.glb')">
-          <img src="/images/2022_06_26-13_23_31.jpg">
+        <div @click="showModel('models/3Ddata3.glb')">
+          <img src="images/2022_06_26-13_23_31.jpg">
         </div>
       </li>
     </ul>
