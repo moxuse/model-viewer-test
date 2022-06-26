@@ -113,14 +113,12 @@ export default defineComponent({
 
     onBeforeUnmount(() => {
       if (requestId) {
-        console.log("remoe id", requestId);
         window.cancelAnimationFrame(requestId);
         requestId = undefined;
       }
     })
 
     const onClose = () => {
-      console.log("HOED++++",emit)
       emit('close');
     }
 
